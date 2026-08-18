@@ -60,19 +60,14 @@
             text-decoration: none;
         }
 
-        .kb-header-logo {
+        /* New Header Image Style */
+        .kb-header-logo-img {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #059669, #047857);
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(5, 150, 105, 0.2);
-            letter-spacing: -0.5px;
+            object-fit: cover;
+            background-color: #ffffff;
         }
 
         .kb-brand-name {
@@ -124,19 +119,16 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-app-icon {
+        /* New Hero App Image Style */
+        .hero-app-icon-img {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, #059669, #047857);
-            color: white;
-            font-size: 42px;
-            font-weight: 800;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             border-radius: 24px;
-            margin: 0 auto 24px;
             box-shadow: 0 20px 40px rgba(5, 150, 105, 0.3);
+            object-fit: cover;
+            margin: 0 auto 24px;
+            display: block;
+            background-color: #ffffff;
         }
 
         .hero-title {
@@ -337,12 +329,12 @@
     <header class="kb-header-wrapper">
         <div class="kb-header-container">
             <a href="/" class="kb-brand">
-                <div class="kb-header-logo">SBC</div>
+                <img src="https://docstore-ak.indusappstore.com/external/indus-images/preview_images/487d5e7a55425dc26b6fe61b970a1c41.webp" alt="Smart Bill Calculator Logo" class="kb-header-logo-img">
                 <h2 class="kb-brand-name">Smart Bill Calculator</h2>
             </a>
             
             <ul class="kb-nav-menu" id="navMenu">
-                <li><a href="/" class="kb-nav-link">Home (Portfolio)</a></li>
+                <li><a href="/" class="kb-nav-link">Home</a></li>
                 <li><a href="/sbc-privacy-policy.html" class="kb-nav-link">Privacy Policy</a></li>
             </ul>
             
@@ -354,7 +346,7 @@
 
     <main>
         <section class="hero-section">
-            <div class="hero-app-icon">SBC</div>
+            <img src="https://docstore-ak.indusappstore.com/external/indus-images/preview_images/487d5e7a55425dc26b6fe61b970a1c41.webp" alt="Smart Bill Calculator Logo" class="hero-app-icon-img">
             <h1 class="hero-title">Your Complete Mobile POS System</h1>
             <p class="hero-subtitle">
                 Transform your smartphone into a powerful billing machine. With Barcode Scanning, Bluetooth Thermal Printing, Dynamic UPI QR, and Offline Khata Book, managing your shop has never been easier.
