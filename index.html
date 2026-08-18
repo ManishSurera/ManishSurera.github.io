@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS Variables for consistent premium theming */
+        /* CSS Variables */
         :root {
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
@@ -50,6 +50,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative; /* Added for mobile menu positioning */
         }
 
         .kb-brand {
@@ -87,6 +88,7 @@
             margin: 0;
             padding: 0;
             list-style: none;
+            transition: all 0.3s ease;
         }
 
         .kb-nav-link {
@@ -131,9 +133,7 @@
             line-height: 1.2;
         }
 
-        .hero-title span {
-            color: var(--primary);
-        }
+        .hero-title span { color: var(--primary); }
 
         .hero-subtitle {
             font-size: 18px;
@@ -157,7 +157,6 @@
             transition: all 0.3s ease;
             box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
             border: none;
-            cursor: pointer;
         }
 
         .btn-primary:hover {
@@ -192,7 +191,6 @@
             box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
             border: 1px solid rgba(226, 232, 240, 0.8);
             transition: transform 0.3s ease;
-            text-align: left;
         }
 
         .feature-card:hover {
@@ -226,10 +224,34 @@
 
         .kb-footer p { color: var(--text-muted); font-size: 14px; margin: 0; }
 
-        /* Mobile Responsiveness */
+        /* --- MOBILE RESPONSIVENESS & MENU DROPDOWN --- */
         @media (max-width: 768px) {
-            .kb-nav-menu { display: none; }
             .kb-mobile-menu-btn { display: block; }
+            
+            /* Hide the menu by default on mobile, make it a dropdown */
+            .kb-nav-menu { 
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid #e2e8f0;
+            }
+            
+            /* When JS adds 'active-menu' class, show it */
+            .kb-nav-menu.active-menu {
+                display: flex;
+            }
+            
+            .kb-nav-menu li {
+                text-align: center;
+                margin: 10px 0;
+            }
+
             .hero-title { font-size: 36px; }
             .hero-section { padding: 60px 20px; }
             .features-section { padding: 50px 20px; }
@@ -245,13 +267,17 @@
                 <div class="kb-header-logo">KB</div>
                 <h2 class="kb-brand-name">Kissht Bahi</h2>
             </a>
-            <ul class="kb-nav-menu">
+            
+            <!-- Navigation Menu -->
+            <ul class="kb-nav-menu" id="navMenu">
                 <li><a href="/" class="kb-nav-link active">Home</a></li>
                 <li><a href="/p/about-us.html" class="kb-nav-link">About Us</a></li>
                 <li><a href="/p/privacy-policy.html" class="kb-nav-link">Privacy Policy</a></li>
                 <li><a href="/p/support.html" class="kb-nav-link">Support</a></li>
             </ul>
-            <button class="kb-mobile-menu-btn" aria-label="Menu">
+            
+            <!-- Hamburger Button -->
+            <button class="kb-mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="3" y1="12" x2="21" y2="12"></line>
                     <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -317,6 +343,19 @@
         </div>
         <p>&copy; 2026 Kissht Bahi. All rights reserved.</p>
     </footer>
+
+    <!-- Javascript menu ko open/close karne ke liye -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+
+            menuBtn.addEventListener('click', function() {
+                // Button dabne par 'active-menu' class add/remove hogi
+                navMenu.classList.toggle('active-menu');
+            });
+        });
+    </script>
 
 </body>
 </html>
