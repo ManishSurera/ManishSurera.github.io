@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kissht Bahi - The Ultimate Digital Ledger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-gradient-start: #f8fafc;
+            --bg-gradient-end: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-light: #94a3b8;
+            --card-bg: #ffffff;
+            --success: #10B981;
+            --warning: #F59E0B;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-gradient-start);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER STYLES --- */
+        .kb-header-wrapper {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            width: 100%;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .kb-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .kb-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .kb-header-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
+
+        .kb-brand-name {
+            color: #0f172a;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .kb-nav-menu {
+            display: flex;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .kb-nav-link {
+            text-decoration: none;
+            color: #475569;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .kb-nav-link:hover { color: var(--primary); }
+
+        .kb-mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #0f172a;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* --- HERO APP SHOWCASE --- */
+        .hero-section {
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            padding: 80px 24px 60px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-app-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            font-size: 42px;
+            font-weight: 800;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 24px;
+            margin: 0 auto 24px;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0 0 16px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            color: #ffffff;
+            padding: 16px 36px;
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+        }
+
+        .download-btn svg { margin-right: 12px; width: 24px; height: 24px; }
+
+        /* --- APP FEATURES GRID --- */
+        .features-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        .section-heading {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-box {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+        }
+
+        .feature-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .icon-sync { background: #eff6ff; color: #3b82f6; }
+        .icon-emi { background: #f0fdf4; color: #10b981; }
+        .icon-pdf { background: #fef2f2; color: #ef4444; }
+        .icon-notify { background: #fffbeb; color: #f59e0b; }
+        .icon-secure { background: #f5f3ff; color: #8b5cf6; }
+        .icon-export { background: #fdf2f8; color: #ec4899; }
+
+        .feature-icon-wrapper svg { width: 30px; height: 30px; }
+
+        .feature-title { font-size: 22px; font-weight: 700; margin: 0 0 12px; color: var(--text-main); }
+        .feature-desc { color: var(--text-muted); font-size: 15px; line-height: 1.6; margin: 0; }
+        
+        .feature-list {
+            margin-top: 16px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .kb-mobile-menu-btn { display: block; }
+            .kb-nav-menu { 
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 100%; left: 0; width: 100%;
+                background: #ffffff; padding: 20px 0;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid #e2e8f0;
+            }
+            .kb-nav-menu.active-menu { display: flex; }
+            .kb-nav-menu li { text-align: center; margin: 10px 0; }
+            .hero-title { font-size: 36px; }
+            .hero-section { padding: 60px 20px; }
+            .features-section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="kb-header-wrapper">
+        <div class="kb-header-container">
+            <a href="/" class="kb-brand">
+                <div class="kb-header-logo">KB</div>
+                <h2 class="kb-brand-name">Kissht Bahi</h2>
+            </a>
+            
+            <ul class="kb-nav-menu" id="navMenu">
+                <li><a href="/" class="kb-nav-link">Home (Portfolio)</a></li>
+                <li><a href="/p/privacy-policy.html" class="kb-nav-link">Privacy Policy</a></li>
+            </ul>
+            
+            <button class="kb-mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-app-icon">KB</div>
+            <h1 class="hero-title">Smart Ledger for Shop Owners</h1>
+            <p class="hero-subtitle">
+                Replace your paper diaries with Kissht Bahi. A powerful, highly secure app to manage daily transactions, EMI installments, customer loans, and PDF receipts even without internet connectivity.
+            </p>
+            <a href="#download_link_here" class="download-btn">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Download App Now
+            </a>
+        </section>
+
+        <section class="features-section">
+            <h2 class="section-heading">Powerful Fintech Features</h2>
+            
+            <div class="features-grid">
+                
+                <div class="feature-box">
+                    <div class="feature-icon-wrapper icon-sync">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                    </div>
+                    <h3 class="feature-title">Smart Offline Sync</h3>
+                    <p class="feature-desc">No internet? No problem. Kissht Bahi works completely offline.</p>
+                    <ul class="feature-list">
+                        <li>Saves customer & loan data locally</li>
+                        <li>Auto-syncs to Supabase cloud when online</li>
+                        <li>Prevents data loss permanently</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-wrapper icon-emi">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="feature-title">Advanced EMI Calculator</h3>
+                    <p class="feature-desc">Instantly calculate total payable amount and monthly EMIs.</p>
+                    <ul class="feature-list">
+                        <li>Auto-calculates interest & EMIs</li>
+                        <li>Dynamic Late Fee Penalty Calculator</li>
+                        <li>Track paid and remaining balances</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-wrapper icon-pdf">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="feature-title">PDF Receipts</h3>
+                    <p class="feature-desc">Generate professional payment receipts instantly after every EMI.</p>
+                    <ul class="feature-list">
+                        <li>Branded with your Shop Name</li>
+                        <li>Download directly to device</li>
+                        <li>Share instantly via WhatsApp/Email</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-wrapper icon-notify">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    </div>
+                    <h3 class="feature-title">Smart Reminders</h3>
+                    <p class="feature-desc">Never miss an EMI collection with our upcoming dues tracker.</p>
+                    <ul class="feature-list">
+                        <li>Dedicated Dashboard for Overdue EMIs</li>
+                        <li>1-Click WhatsApp Reminder sending</li>
+                        <li>1-Click SMS Notification</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-wrapper icon-secure">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    </div>
+                    <h3 class="feature-title">Biometric App Lock</h3>
+                    <p class="feature-desc">Your financial business data is completely protected from intruders.</p>
+                    <ul class="feature-list">
+                        <li>Fingerprint & Face ID Support</li>
+                        <li>Secure Supabase Cloud Database</li>
+                        <li>Guarantor details securely saved</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-wrapper icon-export">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                    </div>
+                    <h3 class="feature-title">Excel Data Export</h3>
+                    <p class="feature-desc">Take complete control of your data by exporting it anytime.</p>
+                    <ul class="feature-list">
+                        <li>Compile customer & loan data</li>
+                        <li>Download in CSV/Excel Format</li>
+                        <li>Access your data anywhere</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Kissht Bahi by Manish Kumar Meena. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+
+            menuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active-menu');
+            });
+        });
+    </script>
+
+</body>
+</html>
