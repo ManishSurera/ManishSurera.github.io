@@ -1,0 +1,132 @@
+<!-- Kissht Bahi Premium Header Starts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+    .kb-header-wrapper {
+        font-family: 'Inter', sans-serif;
+        /* Glassmorphism effect */
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+        width: 100%;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        box-sizing: border-box;
+    }
+
+    .kb-header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .kb-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+    }
+
+    .kb-header-logo {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+    }
+
+    .kb-brand-name {
+        color: #0f172a;
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: -0.5px;
+    }
+
+    .kb-nav-menu {
+        display: flex;
+        gap: 28px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .kb-nav-link {
+        text-decoration: none;
+        color: #475569;
+        font-size: 15px;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+    .kb-nav-link:hover {
+        color: #2563eb;
+    }
+
+    .kb-nav-link.active {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    /* Mobile Menu Button (Hidden on Desktop) */
+    .kb-mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: #0f172a;
+        cursor: pointer;
+        padding: 4px;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .kb-nav-menu {
+            display: none; /* Hide standard menu on small screens */
+        }
+        .kb-mobile-menu-btn {
+            display: block;
+        }
+        .kb-header-container {
+            padding: 14px 20px;
+        }
+    }
+</style>
+
+<header class="kb-header-wrapper">
+    <div class="kb-header-container">
+        <!-- Logo & Brand Name -->
+        <a href="/" class="kb-brand">
+            <div class="kb-header-logo">KB</div>
+            <h2 class="kb-brand-name">Kissht Bahi</h2>
+        </a>
+
+        <!-- Navigation Links -->
+        <ul class="kb-nav-menu">
+            <li><a href="/" class="kb-nav-link">Home</a></li>
+            <li><a href="/p/about-us.html" class="kb-nav-link">About Us</a></li>
+            <li><a href="/p/privacy-policy.html" class="kb-nav-link">Privacy Policy</a></li>
+            <li><a href="/p/support.html" class="kb-nav-link active">Support</a></li>
+        </ul>
+
+        <!-- Mobile Menu Icon (SVG) -->
+        <button class="kb-mobile-menu-btn" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+</header>
+<!-- Kissht Bahi Premium Header Ends -->
