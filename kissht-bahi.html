@@ -61,18 +61,14 @@
             text-decoration: none;
         }
 
-        .kb-header-logo {
+        /* New Header Image Style */
+        .kb-header-logo-img {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            color: white;
-            font-size: 18px;
-            font-weight: 700;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+            object-fit: cover;
+            background-color: #ffffff;
         }
 
         .kb-brand-name {
@@ -124,19 +120,16 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-app-icon {
+        /* New Hero App Image Style */
+        .hero-app-icon-img {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            color: white;
-            font-size: 42px;
-            font-weight: 800;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             border-radius: 24px;
-            margin: 0 auto 24px;
             box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+            object-fit: cover;
+            margin: 0 auto 24px;
+            display: block;
+            background-color: #ffffff;
         }
 
         .hero-title {
@@ -336,7 +329,7 @@
     <header class="kb-header-wrapper">
         <div class="kb-header-container">
             <a href="/" class="kb-brand">
-                <div class="kb-header-logo">KB</div>
+                <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/36/ae/57/36ae5739-8739-6d82-5d79-4901aef18b5c/Placeholder.mill/200x200bb-75.webp" alt="Kissht Bahi Logo" class="kb-header-logo-img">
                 <h2 class="kb-brand-name">Kissht Bahi</h2>
             </a>
             
@@ -353,7 +346,7 @@
 
     <main>
         <section class="hero-section">
-            <div class="hero-app-icon">KB</div>
+            <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/36/ae/57/36ae5739-8739-6d82-5d79-4901aef18b5c/Placeholder.mill/200x200bb-75.webp" alt="Kissht Bahi Logo" class="hero-app-icon-img">
             <h1 class="hero-title">Smart Ledger for Shop Owners</h1>
             <p class="hero-subtitle">
                 Replace your paper diaries with Kissht Bahi. A powerful, highly secure app to manage daily transactions, EMI installments, customer loans, and PDF receipts even without internet connectivity.
