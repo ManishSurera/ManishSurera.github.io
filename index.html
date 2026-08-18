@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manish Kumar Meena - Application Developer</title>
-    <!-- Importing modern Inter font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
@@ -216,21 +215,15 @@
             margin-bottom: 20px;
         }
 
-        .project-icon {
+        /* Naya Image Icon Style */
+        .project-icon-img {
             width: 60px;
             height: 60px;
             border-radius: 16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            font-weight: 700;
-            color: white;
+            object-fit: cover;
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            background-color: #f8fafc;
         }
-
-        .icon-kb { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
-        .icon-sbc { background: linear-gradient(135deg, #059669, #047857); }
 
         .project-title { font-size: 24px; font-weight: 700; margin: 0; color: var(--text-main); }
         .project-desc { color: var(--text-muted); font-size: 15px; line-height: 1.6; margin: 0 0 30px; flex-grow: 1; }
@@ -369,7 +362,6 @@
 </head>
 <body>
 
-    <!-- HEADER SECTION -->
     <header class="kb-header-wrapper">
         <div class="kb-header-container">
             <a href="/" class="kb-brand">
@@ -393,7 +385,6 @@
         </div>
     </header>
 
-    <!-- HERO INTRO SECTION -->
     <main>
         <section class="hero-section">
             <div class="profile-badge">👋 Hello, Welcome to my Portfolio</div>
@@ -408,42 +399,35 @@
             </div>
         </section>
 
-        <!-- PROJECTS SECTION -->
         <section id="projects" class="projects-section">
             <h2 class="section-title">My Mobile Applications</h2>
             
             <div class="projects-grid">
                 
-                <!-- Project 1: Kissht Bahi -->
                 <div class="project-card">
                     <div class="project-header">
-                        <div class="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/36/ae/57/36ae5739-8739-6d82-5d79-4901aef18b5c/Placeholder.mill/200x200bb-75.webp"</div>
+                        <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/36/ae/57/36ae5739-8739-6d82-5d79-4901aef18b5c/Placeholder.mill/200x200bb-75.webp" alt="Kissht Bahi Logo" class="project-icon-img">
                         <h3 class="project-title">Kissht Bahi</h3>
                     </div>
                     <p class="project-desc">
                         A smart digital ledger app designed for shop owners to manage daily transactions, customer loans (Udhar), and EMI installment payments with powerful offline-to-online sync and App Lock security.
                     </p>
                     <div class="project-links">
-                        <!-- Replace link with your actual Kissht Bahi Details/Download page link -->
                         <a href="/kissht-bahi.html" class="btn-project btn-primary-app">App Details & Download</a>
-                        <!-- Replace link with your actual Kissht Bahi Privacy Policy page link -->
                         <a href="/privacy-policy.html" class="btn-project btn-outline">Privacy Policy</a>
                     </div>
                 </div>
 
-                <!-- Project 2: Smart Bill Calculator -->
                 <div class="project-card">
                     <div class="project-header">
-                        <div class="project-icon icon-sbc">SBC</div>
+                        <img src="https://via.placeholder.com/200/059669/FFFFFF?text=SBC" alt="Smart Bill Calculator Logo" class="project-icon-img">
                         <h3 class="project-title">Smart Bill Calculator</h3>
                     </div>
                     <p class="project-desc">
                         A highly secure, offline-first billing application featuring Google ML Kit AI Scanner for product scanning and Bluetooth thermal printer support for generating instant customer bills locally.
                     </p>
                     <div class="project-links">
-                        <!-- Replace link with your actual Smart Bill Details/Download page link -->
                         <a href="/smart-bill-calculator.html" class="btn-project btn-primary-app">App Details & Download</a>
-                        <!-- Replace link with your actual Smart Bill Privacy Policy page link -->
                         <a href="/sbc-privacy-policy.html" class="btn-project btn-outline">Privacy Policy</a>
                     </div>
                 </div>
@@ -451,7 +435,6 @@
             </div>
         </section>
 
-        <!-- CONTACT SECTION -->
         <section id="contact" class="contact-section">
             <div class="contact-box">
                 <h2>Need Support or Have a Project Idea?</h2>
@@ -472,12 +455,10 @@
         </section>
     </main>
 
-    <!-- FOOTER SECTION -->
     <footer class="site-footer">
         <p>&copy; 2026 Manish Kumar Meena. All rights reserved. | Built with passion in Sikar, Rajasthan.</p>
     </footer>
 
-    <!-- Javascript for Mobile Menu -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.getElementById('mobileMenuBtn');
