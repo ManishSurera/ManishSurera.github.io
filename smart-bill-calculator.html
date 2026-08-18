@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Bill Calculator - Ultimate POS & Billing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables - Emerald/Green Theme for Billing App */
+        :root {
+            --primary: #059669; /* Emerald 600 */
+            --primary-hover: #047857; /* Emerald 700 */
+            --bg-gradient-start: #f8fafc;
+            --bg-gradient-end: #ecfdf5; /* Very light green tint */
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-light: #94a3b8;
+            --card-bg: #ffffff;
+            --success: #10B981;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-gradient-start);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER STYLES --- */
+        .kb-header-wrapper {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            width: 100%;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .kb-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .kb-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .kb-header-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #059669, #047857);
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(5, 150, 105, 0.2);
+            letter-spacing: -0.5px;
+        }
+
+        .kb-brand-name {
+            color: #0f172a;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .kb-nav-menu {
+            display: flex;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .kb-nav-link {
+            text-decoration: none;
+            color: #475569;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .kb-nav-link:hover { color: var(--primary); }
+
+        .kb-mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #0f172a;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* --- HERO APP SHOWCASE --- */
+        .hero-section {
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            padding: 80px 24px 60px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-app-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #059669, #047857);
+            color: white;
+            font-size: 42px;
+            font-weight: 800;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 24px;
+            margin: 0 auto 24px;
+            box-shadow: 0 20px 40px rgba(5, 150, 105, 0.3);
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0 0 16px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        /* --- APP STORE & PLAY STORE BUTTONS --- */
+        .store-buttons-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+            border: 1px solid #334155;
+            min-width: 200px;
+            box-sizing: border-box;
+        }
+
+        .store-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(15, 23, 42, 0.3);
+            background-color: #1e293b;
+        }
+
+        .store-btn svg {
+            margin-right: 14px;
+            width: 32px;
+            height: 32px;
+        }
+
+        .store-btn-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .store-btn-small {
+            font-size: 11px;
+            font-weight: 500;
+            color: #cbd5e1;
+            line-height: 1;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .store-btn-large {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- APP FEATURES GRID --- */
+        .features-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        .section-heading {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-box {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+        }
+
+        .feature-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        /* Unique Feature Icon Colors */
+        .icon-scanner { background: #eff6ff; color: #3b82f6; }
+        .icon-printer { background: #fdf2f8; color: #db2777; }
+        .icon-qr { background: #f0fdf4; color: #10b981; }
+        .icon-ledger { background: #fffbeb; color: #f59e0b; }
+        .icon-cash { background: #fef2f2; color: #ef4444; }
+        .icon-pdf { background: #f5f3ff; color: #8b5cf6; }
+
+        .feature-icon-wrapper svg { width: 30px; height: 30px; }
+
+        .feature-title { font-size: 22px; font-weight: 700; margin: 0 0 12px; color: var(--text-main); }
+        .feature-desc { color: var(--text-muted); font-size: 15px; line-height: 1.6; margin: 0; }
+        
+        .feature-list {
+            margin-top: 16px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .kb-mobile-menu-btn { display: block; }
+            .kb-nav-menu { 
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 100%; left: 0; width: 100%;
+                background: #ffffff; padding: 20px 0;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid #e2e8f0;
+            }
+            .kb-nav-menu.active-menu { display: flex; }
+            .kb-nav-menu li { text-align: center; margin: 10px 0; }
+            .hero-title { font-size: 36px; }
+            .hero-section { padding: 60px 20px; }
+            .store-buttons-wrapper { flex-direction: column; width: 100%; }
+            .store-btn { width: 100%; max-width: 300px; justify-content: center; }
+            .features-section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="kb-header-wrapper">
+        <div class="kb-header-container">
+            <a href="/" class="kb-brand">
+                <div class="kb-header-logo">SBC</div>
+                <h2 class="kb-brand-name">Smart Bill Calculator</h2>
+            </a>
+            
+            <ul class="kb-nav-menu" id="navMenu">
+                <li><a href="/" class="kb-nav-link">Home (Portfolio)</a></li>
+                <li><a href="/p/sbc-privacy-policy.html" class="kb-nav-link">Privacy Policy</a></li>
+            </ul>
+            
+            <button class="kb-mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-app-icon">SBC</div>
+            <h1 class="hero-title">Your Complete Mobile POS System</h1>
+            <p class="hero-subtitle">
+                Transform your smartphone into a powerful billing machine. With Barcode Scanning, Bluetooth Thermal Printing, Dynamic UPI QR, and Offline Khata Book, managing your shop has never been easier.
+            </p>
+            
+            <div class="store-buttons-wrapper">
+                <a href="#insert_google_play_link_here" class="store-btn">
+                    <svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"></path>
+                    </svg>
+                    <div class="store-btn-text">
+                        <span class="store-btn-small">GET IT ON</span>
+                        <span class="store-btn-large">Google Play</span>
+                    </div>
+                </a>
+
+                <a href="#insert_apple_app_store_link_here" class="store-btn">
+                    <svg viewBox="0 0 384 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path>
+                    </svg>
+                    <div class="store-btn-text">
+                        <span class="store-btn-small">Download on the</span>
+                        <span class="store-btn-large">App Store</span>
+                    </div>
+                </a>
+            </div>
+
+        </section>
+
+        <section class="features-section">
+            <h2 class="section-heading">All-In-One Shop Features</h2>
+            
+            <div class="features-grid">
+                
+                <div class="feature-box">
+                    <div class="feature-icon-wrapper icon-scanner">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                    </div>
+                    <h3 class="feature-title">AI Barcode Scanner</h3>
+                    <p class="feature-desc">Scan products directly using your phone's camera for lightning-fast billing.</p>
+                    <ul class="feature-list">
+                        <li>Auto-fetches saved products & prices</li>
+                        <li>Add new products directly to local DB</li>
+                        <li>Supports custom units (Kg, gm, Box, etc.)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-wrapper icon-printer">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                    </div>
+                    <h3 class="feature-title">Thermal Printer Support</h3>
+                    <p class="feature-desc">Connect seamlessly with external Bluetooth thermal printers for physical receipts.</p>
+                    <ul class="feature-list">
+                        <li>1-Click Bluetooth Pairing</li>
+                        <li>Prints customized shop receipts</li>
+                        <li>Perfect for retail countertops</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-wrapper icon-qr">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    </div>
+                    <h3 class="feature-title">Dynamic UPI QR Code</h3>
+                    <p class="feature-desc">Eliminate manual amount entry errors during checkout with auto-generated QR codes.</p>
+                    <ul class="feature-list">
+                        <li>Generates exact bill amount QR</li>
+                        <li>Works with PhonePe, GPay, Paytm</li>
+                        <li>Calculate Cash Received & Change instantly</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-wrapper icon-ledger">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <h3 class="feature-title">Offline Khata Book</h3>
+                    <p class="feature-desc">Keep track of your customer's Udhaar (Credit) and Jama (Deposit) securely offline.</p>
+                    <ul class="feature-list">
+                        <li>Add & Manage Customer Balances</li>
+                        <li>Track daily sales and total market dues</li>
+                        <li>100% offline data protection</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-wrapper icon-cash">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="feature-title">Daily Cash Counter</h3>
+                    <p class="feature-desc">Easily tally your cash drawer at the end of the day without a calculator.</p>
+                    <ul class="feature-list">
+                        <li>Count 500, 200, 100 notes easily</li>
+                        <li>Add custom coins or denominations</li>
+                        <li>1-Click Reset button</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-wrapper icon-pdf">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h3 class="feature-title">PDF Invoices & History</h3>
+                    <p class="feature-desc">Generate detailed PDF bills and track your entire lifetime sales history.</p>
+                    <ul class="feature-list">
+                        <li>Share PDFs via WhatsApp/Email</li>
+                        <li>Track total lifetime sales easily</li>
+                        <li>View past bills item-by-item</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Smart Bill Calculator by Manish Kumar Meena. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+
+            menuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active-menu');
+            });
+        });
+    </script>
+
+</body>
+</html>
