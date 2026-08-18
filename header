@@ -1,4 +1,3 @@
-<!-- Kissht Bahi Premium Header Starts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
     .kb-header-wrapper {
@@ -32,18 +31,14 @@
         text-decoration: none;
     }
 
-    .kb-header-logo {
+    /* Updated class for the Image Logo */
+    .kb-header-logo-img {
         width: 40px;
         height: 40px;
-        background: linear-gradient(135deg, #2563eb, #1d4ed8);
-        color: white;
-        font-size: 18px;
-        font-weight: 700;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        object-fit: cover; /* Ensures the image doesn't stretch */
+        background-color: #ffffff; /* Fallback background */
     }
 
     .kb-brand-name {
@@ -105,13 +100,11 @@
 
 <header class="kb-header-wrapper">
     <div class="kb-header-container">
-        <!-- Logo & Brand Name -->
         <a href="/" class="kb-brand">
-            <div class="kb-header-logo">KB</div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1upua7O2IrXYn1YEqg56tnrMkYUB1cbXK6IUQbGl62ECOCgawnyPVd3sw&s=10" alt="Kissht Bahi Logo" class="kb-header-logo-img">
             <h2 class="kb-brand-name">Kissht Bahi</h2>
         </a>
 
-        <!-- Navigation Links -->
         <ul class="kb-nav-menu">
             <li><a href="/" class="kb-nav-link">Home</a></li>
             <li><a href="/about-us.html" class="kb-nav-link">About Us</a></li>
@@ -119,7 +112,6 @@
             <li><a href="/support.html" class="kb-nav-link active">Support</a></li>
         </ul>
 
-        <!-- Mobile Menu Icon (SVG) -->
         <button class="kb-mobile-menu-btn" aria-label="Menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -129,4 +121,3 @@
         </button>
     </div>
 </header>
-<!-- Kissht Bahi Premium Header Ends -->
