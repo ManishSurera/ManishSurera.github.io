@@ -114,9 +114,9 @@
         <!-- Navigation Links -->
         <ul class="kb-nav-menu">
             <li><a href="/" class="kb-nav-link">Home</a></li>
-            <li><a href="/p/about-us.html" class="kb-nav-link">About Us</a></li>
-            <li><a href="/p/privacy-policy.html" class="kb-nav-link">Privacy Policy</a></li>
-            <li><a href="/p/support.html" class="kb-nav-link active">Support</a></li>
+            <li><a href="/about-us.html" class="kb-nav-link">About Us</a></li>
+            <li><a href="/privacy-policy.html" class="kb-nav-link">Privacy Policy</a></li>
+            <li><a href="/support.html" class="kb-nav-link active">Support</a></li>
         </ul>
 
         <!-- Mobile Menu Icon (SVG) -->
