@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Smart Bill Calculator</title>
+    <!-- Importing modern Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-gradient-start: #f8fafc;
+            --bg-gradient-end: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-light: #94a3b8;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- HEADER STYLES --- */
+        .kb-header-wrapper {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            width: 100%;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .kb-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .kb-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .kb-header-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+            letter-spacing: -0.5px;
+        }
+
+        .kb-brand-name {
+            color: #0f172a;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .kb-nav-menu {
+            display: flex;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .kb-nav-link {
+            text-decoration: none;
+            color: #475569;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .kb-nav-link:hover { color: var(--primary); }
+        .kb-nav-link.active { color: var(--primary); font-weight: 600; }
+
+        .kb-mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #0f172a;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* --- POLICY CONTENT STYLES --- */
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .policy-card {
+            background-color: var(--card-bg);
+            max-width: 850px;
+            width: 100%;
+            padding: 60px 50px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(226, 232, 240, 0.5);
+            box-sizing: border-box;
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .policy-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-top: 0;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .policy-date {
+            text-align: center;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        .policy-intro {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .policy-intro p {
+            margin: 0 0 10px 0;
+            color: var(--text-main);
+            font-size: 15px;
+        }
+        .policy-intro p:last-child { margin-bottom: 0; color: var(--text-muted); line-height: 1.6;}
+
+        .policy-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+            width: 100%;
+            margin: 0 auto 40px;
+        }
+
+        .policy-section {
+            margin-bottom: 35px;
+        }
+
+        .policy-section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary);
+            padding-left: 12px;
+        }
+
+        .policy-section p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .policy-section ul {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 15px;
+            padding-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        .policy-section li {
+            margin-bottom: 12px;
+        }
+        
+        .policy-section li strong {
+            color: var(--text-main);
+        }
+
+        /* Contact Buttons */
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 10px;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-email {
+            background: #eff6ff;
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+        }
+
+        .btn-email:hover { background: #dbeafe; }
+
+        .contact-btn svg {
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* --- FOOTER --- */
+        .kb-footer {
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            padding: 40px 24px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .kb-footer p { color: var(--text-muted); font-size: 14px; margin: 0; }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .kb-mobile-menu-btn { display: block; }
+            
+            .kb-nav-menu { 
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid #e2e8f0;
+            }
+            
+            .kb-nav-menu.active-menu { display: flex; }
+            .kb-nav-menu li { text-align: center; margin: 10px 0; }
+
+            .policy-card { padding: 40px 24px; }
+            .policy-title { font-size: 28px; }
+            main { padding: 30px 16px; }
+            
+            .contact-btn {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER SECTION -->
+    <header class="kb-header-wrapper">
+        <div class="kb-header-container">
+            <a href="/" class="kb-brand">
+                <div class="kb-header-logo">SBC</div>
+                <h2 class="kb-brand-name">Smart Bill Calculator</h2>
+            </a>
+            
+            <!-- Navigation Menu -->
+            <ul class="kb-nav-menu" id="navMenu">
+                <li><a href="/" class="kb-nav-link">Home</a></li>
+                <li><a href="/p/privacy-policy.html" class="kb-nav-link active">Privacy Policy</a></li>
+            </ul>
+            
+            <!-- Hamburger Button -->
+            <button class="kb-mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="policy-card">
+            <h1 class="policy-title">Privacy Policy</h1>
+            <div class="policy-date">Effective Date: August 11, 2026</div>
+            
+            <div class="policy-intro">
+                <p><strong>App Name:</strong> Smart Bill Calculator</p>
+                <p style="margin-top: 15px;">Thank you for choosing to use the Smart Bill Calculator app ("we", "us", or "our"). This Privacy Policy explains how we collect, use, and protect your information when you use our mobile application.</p>
+            </div>
+
+            <div class="policy-divider"></div>
+            
+            <div class="policy-section">
+                <h2>1. Information We Collect & How We Use It</h2>
+                <p>Our app is designed to be highly secure and privacy-focused. <strong>We do not collect, store, or transmit your personal data, customer details, or billing information to our servers.</strong> All your Khata (ledger) and Billing data is stored securely and strictly offline (locally) on your device.</p>
+                <ul>
+                    <li><strong>Camera Permission (AI Scanner):</strong> We request camera access solely for the Google ML Kit OCR feature to scan product names and MRPs. This processing happens entirely on your device. We do not save, record, or upload your photos anywhere.</li>
+                    <li><strong>Bluetooth Permission:</strong> Required only for connecting to external thermal printers to print your bills locally. We do not use Bluetooth to track your location or share data.</li>
+                    <li><strong>Storage Access:</strong> Used strictly for saving generated PDF bills and database backups locally on your phone.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>2. Third-Party Services (Google AdMob)</h2>
+                <p>We use Google AdMob to display advertisements within the app to support its development. Google AdMob may collect and use certain data (like your device's advertising ID and IP address) to serve personalized or non-personalized ads.</p>
+                <p>For more information on how Google uses this data, please read the Google Privacy & Terms.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>3. Data Security</h2>
+                <p>Since your business data (bills, customer ledger) never leaves your device, it remains as secure as your phone itself. We highly recommend using a screen lock on your device to protect your local data from unauthorized access.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>4. Changes to This Privacy Policy</h2>
+                <p>We may update this Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>5. Contact Us</h2>
+                <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at:</p>
+                
+                <div style="margin-top: 20px;">
+                    <a href="mailto:kisshtbahi@gmail.com" class="contact-btn btn-email">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        kisshtbahi@gmail.com
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="kb-footer">
+        <div class="kb-brand" style="justify-content: center; margin-bottom: 16px;">
+            <div class="kb-header-logo" style="width: 32px; height: 32px; font-size: 14px;">SBC</div>
+            <h2 class="kb-brand-name" style="font-size: 18px;">Smart Bill Calculator</h2>
+        </div>
+        <p>&copy; 2026 Smart Bill Calculator. All rights reserved.</p>
+    </footer>
+
+    <!-- Javascript for Mobile Menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+
+            menuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active-menu');
+            });
+        });
+    </script>
+
+</body>
+</html>
