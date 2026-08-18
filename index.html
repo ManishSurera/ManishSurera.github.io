@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manish Kumar Meena - Application Developer</title>
+    <!-- Importing modern Inter font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
@@ -59,19 +60,14 @@
             text-decoration: none;
         }
 
-        .kb-header-logo {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, #0f172a, #334155);
-            color: white;
-            font-size: 18px;
-            font-weight: 800;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        /* Header Profile Image Style */
+        .kb-header-logo-img {
+            width: 40px;
+            height: 40px;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(15, 23, 42, 0.2);
-            letter-spacing: 1px;
+            object-fit: cover;
+            background-color: #ffffff;
         }
 
         .kb-brand-name {
@@ -122,6 +118,18 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Main Hero Profile Image Style */
+        .hero-profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+            margin-bottom: 20px;
+            display: inline-block;
         }
 
         .profile-badge {
@@ -215,7 +223,7 @@
             margin-bottom: 20px;
         }
 
-        /* Naya Image Icon Style */
+        /* Project Icons */
         .project-icon-img {
             width: 60px;
             height: 60px;
@@ -362,10 +370,12 @@
 </head>
 <body>
 
+    <!-- HEADER SECTION -->
     <header class="kb-header-wrapper">
         <div class="kb-header-container">
             <a href="/" class="kb-brand">
-                <div class="kb-header-logo">MKM</div>
+                <!-- Header Developer Profile Image -->
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1upua7O2IrXYn1YEqg56tnrMkYUB1cbXK6IUQbGl62ECOCgawnyPVd3sw&s=10" alt="Manish Kumar Meena" class="kb-header-logo-img">
                 <h2 class="kb-brand-name">Manish Kumar Meena</h2>
             </a>
             
@@ -385,8 +395,13 @@
         </div>
     </header>
 
+    <!-- HERO INTRO SECTION -->
     <main>
         <section class="hero-section">
+            <!-- Main Hero Profile Image -->
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1upua7O2IrXYn1YEqg56tnrMkYUB1cbXK6IUQbGl62ECOCgawnyPVd3sw&s=10" alt="Manish Kumar Meena" class="hero-profile-img">
+            <br>
+            
             <div class="profile-badge">👋 Hello, Welcome to my Portfolio</div>
             <h1 class="hero-title">I'm Manish Kumar Meena</h1>
             <p class="hero-subtitle">
@@ -399,11 +414,13 @@
             </div>
         </section>
 
+        <!-- PROJECTS SECTION -->
         <section id="projects" class="projects-section">
             <h2 class="section-title">My Mobile Applications</h2>
             
             <div class="projects-grid">
                 
+                <!-- Project 1: Kissht Bahi -->
                 <div class="project-card">
                     <div class="project-header">
                         <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/36/ae/57/36ae5739-8739-6d82-5d79-4901aef18b5c/Placeholder.mill/200x200bb-75.webp" alt="Kissht Bahi Logo" class="project-icon-img">
@@ -418,6 +435,7 @@
                     </div>
                 </div>
 
+                <!-- Project 2: Smart Bill Calculator -->
                 <div class="project-card">
                     <div class="project-header">
                         <img src="https://docstore-ak.indusappstore.com/external/indus-images/preview_images/487d5e7a55425dc26b6fe61b970a1c41.webp" alt="Smart Bill Calculator Logo" class="project-icon-img">
@@ -435,6 +453,7 @@
             </div>
         </section>
 
+        <!-- CONTACT SECTION -->
         <section id="contact" class="contact-section">
             <div class="contact-box">
                 <h2>Need Support or Have a Project Idea?</h2>
@@ -455,10 +474,12 @@
         </section>
     </main>
 
+    <!-- FOOTER SECTION -->
     <footer class="site-footer">
         <p>&copy; 2026 Manish Kumar Meena. All rights reserved. | Built with passion in Sikar, Rajasthan.</p>
     </footer>
 
+    <!-- Javascript for Mobile Menu -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.getElementById('mobileMenuBtn');
